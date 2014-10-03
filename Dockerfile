@@ -38,6 +38,11 @@ RUN apt-get update -qq && \
     subversion \ 
     tcl8.5-dev \
     texinfo \
+    texlive-base \
+    texlive-fonts-recommended \
+    texlive-generic-recommended \
+    texlive-latex-base \
+    texlive-latex-recommended \
     tk8.5-dev \
     x11proto-core-dev \
     xauth \
@@ -77,12 +82,6 @@ RUN cd /tmp/R-devel && \
 run echo "R_LIBS_SITE=\${R_LIBS_SITE-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" > /usr/local/lib/R/etc/Renviron.site
 run cd /usr/local/bin && mv R Rdevel && mv Rscript Rscriptdevel
 
-
-    # texlive-base \
-    # texlive-extra-utils \
-    # texlive-fonts-extra \
-    # texlive-fonts-recommended \
-    # texlive-generic-recommended \
-    # texlive-latex-base \
-    # texlive-latex-extra \
-    # texlive-latex-recommended \
+#    texlive-extra-utils \
+#    texlive-fonts-extra \
+#    texlive-latex-extra \
