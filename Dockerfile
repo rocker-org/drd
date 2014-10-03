@@ -51,6 +51,13 @@ RUN apt-get update -qq && \
     xvfb \
     zlib1g-dev 
 
+
+## commented-out as not needed:
+#    texlive-extra-utils \
+#    texlive-fonts-extra \
+#    texlive-latex-extra \
+
+
 ## Check out R-devel
 RUN cd /tmp && svn co http://svn.r-project.org/R/trunk R-devel 
 
@@ -79,10 +86,36 @@ RUN cd /tmp/R-devel && \
     rm -rf /tmp/R-devel /tmp/downloaded_packages/ /tmp/*.rds
 
 ## Set Renviron.site to get libs from base R install
-run echo "R_LIBS_SITE=\${R_LIBS_SITE-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" > /usr/local/lib/R/etc/Renviron.site
-run cd /usr/local/bin && mv R Rdevel && mv Rscript Rscriptdevel
+run echo "R_LIBS_SITE=\${R_LIBS_SITE-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" > \
+       /usr/local/lib/R/etc/Renviron.site && \
+    cd /usr/local/bin && \
+    mv R Rdevel && \
+    mv Rscript Rscriptdevel
 
-## commented-out:
-#    texlive-extra-utils \
-#    texlive-fonts-extra \
-#    texlive-latex-extra \
+## removal of dev packages
+run dpkg --purge  \
+    libblas-dev \
+    libbz2-dev  \
+    libcairo2-dev \
+    libfontconfig1-dev \
+    libfreetype6-dev \
+    libglib2.0-dev \
+    libjpeg-dev \
+    liblapack-dev  \
+    liblzma-dev \
+    libncurses5-dev \
+    libpango1.0-dev \
+    libpcre3-dev \
+    libpng12-dev \
+    libreadline-dev \
+    libtiff5-dev \
+    libxft-dev \
+    libxt-dev \
+    r-base-dev \
+    tcl8.5-dev \
+    texlive-base \
+    texlive-fonts-recommended \
+    texlive-generic-recommended \
+    texlive-latex-base \
+    texlive-latex-recommended \
+    tk8.5-dev 
