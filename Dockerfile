@@ -76,12 +76,13 @@ RUN cd /tmp/R-devel && \
     cd /tmp/R-devel && \
     make && \
     make install && \
-    rm -rf /tmp/r-devel
+    rm -rf /tmp/R-devel /tmp/downloaded_packages/ /tmp/*.rds
 
 ## Set Renviron.site to get libs from base R install
 run echo "R_LIBS_SITE=\${R_LIBS_SITE-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" > /usr/local/lib/R/etc/Renviron.site
 run cd /usr/local/bin && mv R Rdevel && mv Rscript Rscriptdevel
 
+## commented-out:
 #    texlive-extra-utils \
 #    texlive-fonts-extra \
 #    texlive-latex-extra \
