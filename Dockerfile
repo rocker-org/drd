@@ -86,14 +86,14 @@ RUN cd /tmp/R-devel && \
     rm -rf /tmp/R-devel /tmp/downloaded_packages/ /tmp/*.rds
 
 ## Set Renviron.site to get libs from base R install
-run echo "R_LIBS_SITE=\${R_LIBS_SITE-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" > \
+RUN echo "R_LIBS_SITE=\${R_LIBS_SITE-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" > \
        /usr/local/lib/R/etc/Renviron.site && \
     cd /usr/local/bin && \
     mv R Rdevel && \
     mv Rscript Rscriptdevel
 
 ## removal of dev packages
-run dpkg --purge  \
+RUN dpkg --purge  \
     libblas-dev \
     libbz2-dev  \
     libcairo2-dev \
@@ -118,4 +118,5 @@ run dpkg --purge  \
     texlive-generic-recommended \
     texlive-latex-base \
     texlive-latex-recommended \
-    tk8.5-dev 
+    tk8.5-dev \
+&& apt-get autoremove -qy
