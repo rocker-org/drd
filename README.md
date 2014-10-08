@@ -9,6 +9,6 @@ builds upon earlier Docker repos and automated builds in my repositories.
 
 #### Date
 
-This build was triggered Sun Oct  5 14:38:55 CDT 2014.
+This build was triggered Wed Oct  8 06:23:12 CDT 2014.
 
 
