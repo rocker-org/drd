@@ -10,6 +10,11 @@ MAINTAINER Dirk Eddelbuettel edd@debian.org
 RUN apt-get update -qq && apt-get dist-upgrade -y
 
 ## From the Build-Depends of the Debian R package, plus subversion
+## Check out R-devel
+## Build and install according the standard 'recipe' I emailed/posted years ago
+## Set Renviron.site to get libs from base R install
+## Clean up
+## -- all in one command to get a single AUFS layer
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
     bash-completion \
@@ -49,20 +54,10 @@ RUN apt-get update -qq && \
     xdg-utils \
     xfonts-base \
     xvfb \
-    zlib1g-dev 
-
-
-## commented-out as not needed:
-#    texlive-extra-utils \
-#    texlive-fonts-extra \
-#    texlive-latex-extra \
-
-
-## Check out R-devel
-RUN cd /tmp && svn co http://svn.r-project.org/R/trunk R-devel 
-
-## Build and install according the standard 'recipe' I emailed/posted years ago
-RUN cd /tmp/R-devel && \
+    zlib1g-dev \
+&& cd /tmp \
+&& svn co http://svn.r-project.org/R/trunk R-devel \
+&& cd /tmp/R-devel && \
     R_PAPERSIZE=letter \
     R_BATCHSAVE="--no-save --no-restore" \
     R_BROWSER=xdg-open \
@@ -83,17 +78,12 @@ RUN cd /tmp/R-devel && \
     cd /tmp/R-devel && \
     make && \
     make install && \
-    rm -rf /tmp/R-devel /tmp/downloaded_packages/ /tmp/*.rds
-
-## Set Renviron.site to get libs from base R install
-RUN echo "R_LIBS_SITE=\${R_LIBS_SITE-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" > \
-       /usr/local/lib/R/etc/Renviron.site && \
-    cd /usr/local/bin && \
-    mv R Rdevel && \
-    mv Rscript Rscriptdevel
-
-## removal of dev packages
-RUN dpkg --purge  \
+    rm -rf /tmp/R-devel /tmp/downloaded_packages/ /tmp/*.rds \
+&& echo "R_LIBS_SITE=\${R_LIBS_SITE-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" > /usr/local/lib/R/etc/Renviron.site \
+&& cd /usr/local/bin \
+&& mv R Rdevel \
+&& mv Rscript Rscriptdevel \
+&& dpkg --purge  \
     libblas-dev \
     libbz2-dev  \
     libcairo2-dev \
