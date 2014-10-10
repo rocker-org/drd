@@ -1,7 +1,7 @@
 ## Emacs, make this -*- mode: sh; -*-
 
 ## start with the Docker 'base R' Debian-based image
-FROM eddelbuettel/debian-r-base
+FROM rocker/r-base
 
 ## That's me
 MAINTAINER Dirk Eddelbuettel edd@debian.org
