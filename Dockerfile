@@ -84,6 +84,8 @@ RUN apt-get update -qq && \
 && cd /usr/local/bin \
 && mv R Rdevel \
 && mv Rscript Rscriptdevel \
+&& ln -s Rdevel RD \
+&& ln -s Rscriptdevel RDscript \
 && dpkg --purge  \
     libblas-dev \
     libbz2-dev  \
