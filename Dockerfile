@@ -79,7 +79,7 @@ RUN apt-get update -qq && \
     make && \
     make install && \
     rm -rf /tmp/R-devel /tmp/downloaded_packages/ /tmp/*.rds \
-&& echo "R_LIBS_SITE=\${R_LIBS_SITE-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" > /usr/local/lib/R/etc/Renviron.site \
+&& echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron \
 && echo 'options("repos"="http://cran.rstudio.com")' >> /usr/local/lib/R/etc/Rprofile.site \
 && cd /usr/local/bin \
 && mv R Rdevel \
