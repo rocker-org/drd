@@ -73,6 +73,7 @@ RUN apt-get update -qq && \
     ./configure --enable-R-shlib \
     		--without-blas \
     		--without-lapack \
+                --with-readline \
     		--without-recommended-packages \
 		--program-suffix=dev && \
     cd /tmp/R-devel && \
