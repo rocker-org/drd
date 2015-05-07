@@ -113,6 +113,9 @@ RUN apt-get update -qq && \
                 libxt-dev \
                 libxcb1-dev \
                 libxdmcp-dev \
+                libx11-dev \
+                libxcb-render0-dev \
+                libxcb-shm0-dev \
                 r-base-dev \
                 tcl8.6-dev \
                 texlive-base \
