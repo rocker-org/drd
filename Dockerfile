@@ -30,6 +30,7 @@ RUN apt-get update -qq && \
                 libcairo2-dev/unstable \
                 libcurl4-openssl-dev/unstable \
                 libfreetype6-dev/unstable \
+    		libharfbuzz-dev/unstable \
                 libjpeg-dev \
                 liblapack-dev \
                 liblzma-dev \
@@ -98,6 +99,7 @@ RUN apt-get update -qq && \
                 libfontconfig1-dev \
                 libfreetype6-dev \
                 libglib2.0-dev \
+    		libharfbuzz-dev \
                 libjpeg-dev \
                 liblapack-dev  \
                 liblzma-dev \
@@ -109,6 +111,8 @@ RUN apt-get update -qq && \
                 libtiff5-dev \
                 libxft-dev \
                 libxt-dev \
+                libxcb1-dev \
+                libxdmcp-dev \
                 r-base-dev \
                 tcl8.6-dev \
                 texlive-base \
