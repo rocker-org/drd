@@ -29,6 +29,7 @@ RUN apt-get update -qq && \
                 libbz2-dev \
                 libcairo2-dev/unstable \
                 libcurl4-openssl-dev \
+                libfreetype6-dev/unstable \
                 libjpeg-dev \
                 liblapack-dev \
                 liblzma-dev \
@@ -39,6 +40,8 @@ RUN apt-get update -qq && \
                 libreadline-dev \
                 libtiff5-dev \
                 libx11-dev \
+                libxcb1-dev/unstable \
+                libxdmcp-dev/unstable \
                 libxt-dev \
                 mpack \
                 subversion \ 
