@@ -28,13 +28,13 @@ RUN apt-get update -qq && \
                 libblas-dev \
                 libbz2-dev \
                 libcairo2-dev/unstable \
-                libcurl4-openssl-dev \
+                libcurl4-openssl-dev/unstable \
                 libfreetype6-dev/unstable \
                 libjpeg-dev \
                 liblapack-dev \
                 liblzma-dev \
                 libncurses5-dev \
-                libpango1.0-dev \
+                libpango1.0-dev/unstable \
                 libpcre3-dev \
                 libpng-dev \
                 libreadline-dev \
