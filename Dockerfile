@@ -20,7 +20,6 @@ RUN apt-get update -qq && \
                 bash-completion \
                 bison \
                 debhelper \
-                default-jdk \
                 g++ \
                 gcc \
                 gfortran \
