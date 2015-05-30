@@ -16,10 +16,11 @@ RUN apt-get update -qq && apt-get dist-upgrade -y
 ## Clean up
 ## -- all in one command to get a single AUFS layer
 RUN apt-get update -qq && \
-        apt-get install -y --no-install-recommends \
+        apt-get install -y -t unstable --no-install-recommends \
                 bash-completion \
                 bison \
                 debhelper \
+                default-jdk \
                 g++ \
                 gcc \
                 gfortran \
@@ -38,7 +39,7 @@ RUN apt-get update -qq && \
                 libpcre3-dev \
                 libpng-dev \
                 libreadline-dev \
-                libtiff5-dev \
+                libtiff5-dev/unstable \
                 libx11-dev \
                 libxcb1-dev/unstable \
                 libxdmcp-dev/unstable \
