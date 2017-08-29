@@ -30,7 +30,7 @@ RUN apt-get update -qq && \
                 libcairo2-dev/unstable \
                 libcurl4-openssl-dev/unstable \
                 libfreetype6-dev/unstable \
-    		libharfbuzz-dev/unstable \
+                libharfbuzz-dev/unstable \
                 libjpeg-dev \
                 liblapack-dev \
                 liblzma-dev \
@@ -92,14 +92,14 @@ RUN apt-get update -qq && \
         && mv Rscript Rscriptdevel \
         && ln -s Rdevel RD \
         && ln -s Rscriptdevel RDscript \
-        && dpkg --purge  \
+        && apt-get purge -qy \
                 libblas-dev \
                 libbz2-dev  \
                 libcairo2-dev \
                 libfontconfig1-dev \
                 libfreetype6-dev \
                 libglib2.0-dev \
-    		libharfbuzz-dev \
+                libharfbuzz-dev \
                 libjpeg-dev \
                 liblapack-dev  \
                 liblzma-dev \
@@ -119,4 +119,4 @@ RUN apt-get update -qq && \
                 texlive-latex-recommended \
                 tk8.6-dev \
         && apt-get autoremove -qy
-        
+
