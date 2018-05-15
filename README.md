@@ -3,9 +3,7 @@
 This repository aims to provide (possibly daily) builds of Docker containers based on
 the then-current state of the R-devel SVN repository.
 
-It is now part of the [rocker](https://github.com/eddelbuettel/rocker)
-repository in which @cboettig and @eddelbuettel are now working, and it
-builds upon earlier Docker repos and automated builds in Dirk's repositories.
+It is part of the [Rocker](https://github.com/rocker-org) project.
 
 #### So what about r-devel in Rocker then?
 
@@ -23,7 +21,4 @@ containers are built, and hence still somewhat experimental.
 But if you just want a smaller container with a current R-devel build, this
 may be the one.
 
-#### Date
-
-This build was triggered Sat Nov 15 16:31:51 CST 2014.
 

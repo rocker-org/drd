@@ -3,8 +3,10 @@
 ## start with the Docker 'base R' Debian-based image
 FROM r-base:latest
 
-## That's me
-MAINTAINER Dirk Eddelbuettel edd@debian.org
+LABEL org.label-schema.license="GPL-2.0" \
+      org.label-schema.vcs-url="https://github.com/rocker-org/drd" \
+      org.label-schema.vendor="Rocker Project" \
+      maintainer="Dirk Eddelbuettel <edd@debian.org>"
 
 ## Remain current
 RUN apt-get update -qq && apt-get dist-upgrade -y
@@ -30,7 +32,7 @@ RUN apt-get update -qq && \
                 libcairo2-dev/unstable \
                 libcurl4-openssl-dev/unstable \
                 libfreetype6-dev/unstable \
-                libharfbuzz-dev/unstable \
+    		libharfbuzz-dev/unstable \
                 libjpeg-dev \
                 liblapack-dev \
                 liblzma-dev \
@@ -61,7 +63,9 @@ RUN apt-get update -qq && \
                 xvfb \
                 zlib1g-dev \
         && cd /tmp \
-        && svn co https://svn.r-project.org/R/trunk R-devel \
+        && wget https://stat.ethz.ch/R/daily/R-devel.tar.bz2 \
+        && tar xaf R-devel.tar.bz2 \
+        && rm R-devel.tar.bz2 \
         && cd /tmp/R-devel && \
                 R_PAPERSIZE=letter \
                 R_BATCHSAVE="--no-save --no-restore" \
@@ -75,9 +79,11 @@ RUN apt-get update -qq && \
                 AWK=/usr/bin/awk \
                 CFLAGS=$(R CMD config CFLAGS) \
                 CXXFLAGS=$(R CMD config CXXFLAGS) \
+                FFLAGS=$(R CMD config FFLAGS) \
                 ./configure --enable-R-shlib \
-                        --without-blas \
-                        --without-lapack \
+                	--enable-memory-profiling \
+                        --with-blas \
+                        --with-lapack \
                         --with-readline \
                         --without-recommended-packages \
                         --program-suffix=dev && \
@@ -86,13 +92,14 @@ RUN apt-get update -qq && \
                 make install && \
                 rm -rf /tmp/R-devel /tmp/downloaded_packages/ /tmp/*.rds \
         && echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron \
-        && echo 'options("repos"="https://cran.rstudio.com")' >> /usr/local/lib/R/etc/Rprofile.site \
+        && echo 'options("repos"="https://cloud.r-project.org")' >> /usr/local/lib/R/etc/Rprofile.site \
         && cd /usr/local/bin \
         && mv R Rdevel \
         && mv Rscript Rscriptdevel \
         && ln -s Rdevel RD \
-        && ln -s Rscriptdevel RDscript \
+        && ln -s Rscriptdevel RDscript 
         && apt-get purge -qy \
+                dh-r \
                 libblas-dev \
                 libbz2-dev  \
                 libcairo2-dev \
@@ -100,13 +107,15 @@ RUN apt-get update -qq && \
                 libfreetype6-dev \
                 libglib2.0-dev \
                 libharfbuzz-dev \
-                libjpeg-dev \
+                libicu-le-hb-dev \
+                libicu-dev \
+		libjpeg-dev \
                 liblapack-dev  \
                 liblzma-dev \
                 libncurses5-dev \
                 libpango1.0-dev \
                 libpcre3-dev \
-                libpng12-dev \
+		libpng-dev \
                 libreadline-dev \
                 libtiff5-dev \
                 libxft-dev \
@@ -117,6 +126,11 @@ RUN apt-get update -qq && \
                 texlive-generic-recommended \
                 texlive-latex-base \
                 texlive-latex-recommended \
+                texlive-plain-generic \
                 tk8.6-dev \
-        && apt-get autoremove -qy
+        && apt-get autoremove -qy \
+        && rm -rf /tmp/R-devel
+        
+## Launch R-devel by defailt
+CMD ["RD"]
 
