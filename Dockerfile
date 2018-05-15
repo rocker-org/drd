@@ -97,7 +97,7 @@ RUN apt-get update -qq && \
         && mv R Rdevel \
         && mv Rscript Rscriptdevel \
         && ln -s Rdevel RD \
-        && ln -s Rscriptdevel RDscript 
+        && ln -s Rscriptdevel RDscript \
         && apt-get purge -qy \
                 dh-r \
                 libblas-dev \
