@@ -131,8 +131,8 @@ RUN apt-get update -qq && \
         && apt-get autoremove -qy \
         && rm -rf /tmp/R-devel
 
-## Copy 'checkbashism' (as a local copy from devscripts package)
-COPY checkbashism /usr/local/bin
+## Copy 'checkbashisms' (as a local copy from devscripts package)
+COPY checkbashisms /usr/local/bin
 
 ## Launch R-devel by defailt
 CMD ["RD"]
