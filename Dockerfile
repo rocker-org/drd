@@ -47,7 +47,7 @@ RUN apt-get update -qq && \
                 libxdmcp-dev/unstable \
                 libxt-dev \
                 mpack \
-                subversion \ 
+                subversion \
                 tcl8.6-dev \
                 texinfo \
                 texlive-base \
@@ -130,7 +130,9 @@ RUN apt-get update -qq && \
                 tk8.6-dev \
         && apt-get autoremove -qy \
         && rm -rf /tmp/R-devel
-        
+
+## Copy 'checkbashism' (as a local copy from devscripts package)
+COPY checkbashism /usr/local/bin
+
 ## Launch R-devel by defailt
 CMD ["RD"]
-
