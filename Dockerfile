@@ -100,6 +100,7 @@ RUN apt-get update -qq && \
         && ln -s Rscriptdevel RDscript \
         && rm -f /usr/share/fonts/type1/texlive-fonts-recommended/.uuid \
         && rm -f /usr/share/fonts/type1/.uuid \
+        && echo "libicu67 hold" | dpkg --set-selections \
         && apt-get purge -qy \
                 dh-r \
                 libblas-dev \
@@ -111,7 +112,6 @@ RUN apt-get update -qq && \
                 libfreetype6-dev \
                 libglib2.0-dev \
                 libharfbuzz-dev \
-                libicu-le-hb-dev \
                 libicu-dev \
                 libjpeg-dev \
                 liblapack-dev  \
