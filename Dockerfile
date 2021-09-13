@@ -106,7 +106,6 @@ RUN apt-get update -qq && \
         && rm -f /usr/share/fonts/type1/.uuid \
         && echo "libicu67 hold" | dpkg --set-selections \
         && apt-get purge -qy \
-                dh-r \
                 libblas-dev \
                 libbz2-dev  \
                 libcairo2-dev \
