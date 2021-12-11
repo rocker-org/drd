@@ -56,7 +56,7 @@ RUN apt-get update -qq && \
                 texinfo \
                 texlive-base \
                 texlive-fonts-recommended \
-                texlive-generic-recommended \
+                texlive-plain-generic \
                 texlive-latex-base \
                 texlive-latex-recommended \
                 tk8.6-dev \
@@ -131,7 +131,7 @@ RUN apt-get update -qq && \
                 tcl8.6-dev \
                 texlive-base \
                 texlive-fonts-recommended \
-                texlive-generic-recommended \
+                texlive-plain-generic \
                 texlive-latex-base \
                 texlive-latex-recommended \
                 texlive-plain-generic \
