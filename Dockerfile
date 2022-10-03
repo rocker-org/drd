@@ -1,7 +1,8 @@
 ## Emacs, make this -*- mode: sh; -*-
 
 ## start with the Docker 'base R' Debian-based image
-FROM r-base:latest
+#FROM r-base:latest
+FROM rocker/r-base:latest
 
 LABEL org.label-schema.license="GPL-2.0" \
       org.label-schema.vcs-url="https://github.com/rocker-org/drd" \
@@ -13,7 +14,8 @@ LABEL org.label-schema.license="GPL-2.0" \
 ENV DEBIAN_FRONTEND noninteractive
 
 ## Remain current
-RUN apt-get update -qq && apt-get dist-upgrade -y
+#RUN apt-get update -qq && apt-get dist-upgrade -y
+RUN apt-get update -qq
 
 ## From the Build-Depends of the Debian R package, plus subversion
 ## Check out R-devel
