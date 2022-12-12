@@ -1,8 +1,7 @@
 ## Emacs, make this -*- mode: sh; -*-
 
 ## start with the Docker 'base R' Debian-based image
-#FROM r-base:latest
-FROM rocker/r-base:latest
+FROM r-base:latest
 
 LABEL org.label-schema.license="GPL-2.0" \
       org.label-schema.vcs-url="https://github.com/rocker-org/drd" \
@@ -14,8 +13,7 @@ LABEL org.label-schema.license="GPL-2.0" \
 ENV DEBIAN_FRONTEND noninteractive
 
 ## Remain current
-#RUN apt-get update -qq && apt-get dist-upgrade -y
-RUN apt-get update -qq
+RUN apt-get update -qq && apt-get dist-upgrade -y
 
 ## From the Build-Depends of the Debian R package, plus subversion
 ## Check out R-devel
@@ -97,7 +95,7 @@ RUN apt-get update -qq && \
                 make && \
                 make install && \
                 rm -rf /tmp/R-devel /tmp/downloaded_packages/ /tmp/*.rds \
-        && echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron \
+        && echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/site-library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron \
         && echo 'options("repos"="https://cloud.r-project.org")' >> /usr/local/lib/R/etc/Rprofile.site \
         && cd /usr/local/bin \
         && mv R Rdevel \
