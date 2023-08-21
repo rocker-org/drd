@@ -35,7 +35,7 @@ RUN apt-get update -qq && \
                 libbz2-dev \
                 libcairo2-dev/unstable \
                 libcurl4-openssl-dev/unstable \
-                libfreetype6-dev/unstable \
+                libfreetype-dev \
                 libharfbuzz-dev/unstable \
                 libjpeg-dev \
                 liblapack-dev \
@@ -104,7 +104,6 @@ RUN apt-get update -qq && \
         && ln -s Rscriptdevel RDscript \
         && rm -f /usr/share/fonts/type1/texlive-fonts-recommended/.uuid \
         && rm -f /usr/share/fonts/type1/.uuid \
-        && echo "libicu67 hold" | dpkg --set-selections \
         && apt-get purge -qy \
                 libblas-dev \
                 libbz2-dev  \
@@ -112,7 +111,6 @@ RUN apt-get update -qq && \
                 libfontconfig-dev \
                 libfontconfig1-dev \
                 libfreetype-dev \
-                libfreetype6-dev \
                 libglib2.0-dev \
                 libharfbuzz-dev \
                 libicu-dev \
