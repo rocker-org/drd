@@ -67,9 +67,9 @@ RUN apt-get update -qq && \
                 xvfb \
                 zlib1g-dev \
         && cd /tmp \
-        && wget https://stat.ethz.ch/R/daily/R-devel.tar.bz2 \
-        && tar xaf R-devel.tar.bz2 \
-        && rm R-devel.tar.bz2 \
+        && wget https://stat.ethz.ch/R/daily/R-devel.tar.xz \
+        && tar xaf R-devel.tar.xz \
+        && rm R-devel.tar.xz \
         && cd /tmp/R-devel && \
                 R_PAPERSIZE=letter \
                 R_BATCHSAVE="--no-save --no-restore" \
