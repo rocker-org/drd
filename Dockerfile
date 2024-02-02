@@ -1,6 +1,5 @@
 ## Emacs, make this -*- mode: sh; -*-
 
-## start with the Docker 'base R' Debian-based image
 FROM rocker/r2u:latest
 
 LABEL org.label-schema.license="GPL-2.0" \
