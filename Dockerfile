@@ -57,6 +57,7 @@ RUN apt-get update -qq \
                 texlive-latex-base \
                 texlive-latex-recommended \
                 tk-dev \
+                wget \
                 x11proto-core-dev \
                 xauth \
                 xdg-utils \
