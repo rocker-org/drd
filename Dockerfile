@@ -9,7 +9,7 @@ LABEL org.label-schema.license="GPL-2.0" \
 
 ## Needed in case a base package has an interactive question
 ## (as e.g. base-passwd in Oct 2020)
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 ## From the Build-Depends of the Debian R package, plus subversion
 ## Check out R-devel
@@ -22,6 +22,7 @@ RUN apt-get update -qq \
     && apt-get install -y --no-install-recommends \
                 bash-completion \
                 bison \
+                curl \
                 debhelper \
                 default-jdk \
                 g++ \
